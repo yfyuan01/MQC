@@ -8,6 +8,6 @@ is the full version of the Melon dataset. All images can be accessed via the lin
 We release the generative document retrieval code via . All the training instances are preprocessed by BM25 first-phase-retrieval and a Bert-QPP clarifying question selection module. 
 
 # multimodal taxonomy classes
-We show the definition and real cases of these multimodal taxonomy via the file:
+We show the definition and real cases of these multimodal taxonomy via the MQC taxonomy file.
 
 
