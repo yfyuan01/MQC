@@ -8,3 +8,9 @@
 **Answer**: corresponding user answer
 
 **image{k}**: attached images
+
+# Format of the question_bank.csv
+
+**question_id**: ids of each question. The same as ClariQ.
+
+**question**: clarifying question text
