@@ -100,7 +100,7 @@ def train_iteration(model, optimizer, dataset, img_pairs, train_pairs, qrels):
     model.train()
     total_loss = 0.
     with tqdm('training', total=BATCH_SIZE * BATCHES_PER_EPOCH, ncols=80, desc='train', leave=False) as pbar:
-        for record in data.iter_train_pairs(model, dataset, img_pairs, train_pairs, qrels, GRAD_ACC_SIZE):
+        for record in data_multimodal.iter_train_pairs(model, dataset, img_pairs, train_pairs, qrels, GRAD_ACC_SIZE):
             scores = model(record['query_tok'],
                            record['query_mask'],
                            record['doc_tok'],
@@ -134,7 +134,7 @@ def run_model(model, dataset, img_pairs, run, desc='valid'):
     rerank_run = defaultdict(dict)
     with torch.no_grad(), tqdm(total=sum(len(r) for r in run.values()), ncols=80, desc=desc, leave=False) as pbar:
         model.eval()
-        for records in data.iter_valid_records(model, dataset, img_pairs, run, BATCH_SIZE):
+        for records in data_multimodal.iter_valid_records(model, dataset, img_pairs, run, BATCH_SIZE):
             scores = model(records['query_tok'],
                            records['query_mask'],
                            records['doc_tok'],
@@ -167,11 +167,11 @@ def main_cli():
     parser.add_argument('--model_out_dir')
     args = parser.parse_args()
     model = MODEL_MAP[args.model]().cuda()
-    dataset = data.read_datafiles(args.datafiles)
-    qrels = data.read_qrels_dict(args.qrels)
-    img_pairs = data.read_img_dict(args.imgdict)
-    train_pairs = data.read_pairs_dict(args.train_pairs)
-    valid_run = data.read_run_dict(args.valid_run)
+    dataset = data_multimodal.read_datafiles(args.datafiles)
+    qrels = data_multimodal.read_qrels_dict(args.qrels)
+    img_pairs = data_multimodal.read_img_dict(args.imgdict)
+    train_pairs = data_multimodal.read_pairs_dict(args.train_pairs)
+    valid_run = data_multimodal.read_run_dict(args.valid_run)
 
     if args.initial_bert_weights is not None:
         model.load(args.initial_bert_weights.name)
