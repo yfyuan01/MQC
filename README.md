@@ -14,10 +14,40 @@ cwdocs/ is the folder of the documents for each facet, used for retrieval evalua
 
 **All the images can be assess by the format of https://xmrec.github.io/mturk_images/all_images/{img_id}.**
 
+# Baselines
+The Bert based retrieval code is stored in cedr/. To train, run train.sh. To rerank, run test.sh. 
+
+To add multimodal information, change train.py to train_multimodal.py.
+
+The BM25-based method is stored in first_phase_retrieval. 
+
+bm25.py is to retrieve documents based on topics, questions, and answers.
+
+bm25_ques.py is to retrieve questions based on topics.
+
+gdeval.pl is the evaluation script. To run it, use 
+```
+perl gdeval.pl [ground-truth.qrel] [result.qrel].
+```
+
 # Code
-We release the generative document retrieval code. All the training instances are preprocessed by BM25 first-phase-retrieval and a Bert-QPP clarifying question selection module. 
+
+We will update the code at the end of September, please stay tuned.
+
 
 # Multimodal taxonomy classes
 We show the definition and real cases of these multimodal taxonomy via the MQC taxonomy file in the data/ folder.
 
-
+# Citations
+If you find this useful, please cite
+```
+@inproceedings{10.1145/3589334.3645483,
+author = {Yuan, Yifei and Siro, Clemencia and Aliannejadi, Mohammad and Rijke, Maarten de and Lam, Wai},
+title = {Asking Multimodal Clarifying Questions in Mixed-Initiative Conversational Search},
+year = {2024},
+url = {https://doi.org/10.1145/3589334.3645483},
+doi = {10.1145/3589334.3645483},
+booktitle = {Proceedings of the ACM Web Conference 2024},
+pages = {1474–1485},
+}
+```
