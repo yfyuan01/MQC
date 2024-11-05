@@ -12,6 +12,8 @@ facet_data/ stores all the qrels.
 
 cwdocs/ is the folder of the documents for each facet, used for retrieval evaluation. 
 
+qrels/ is the ground-truth qrel we used for training/validation/inference.
+
 **All the images can be assess by the format of https://xmrec.github.io/mturk_images/all_images/{img_id}.**
 
 # Baselines
