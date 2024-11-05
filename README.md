@@ -34,8 +34,9 @@ perl gdeval.pl [ground-truth.qrel] [result.qrel].
 
 # Code
 
-We will update the code at the end of September, please stay tuned.
+The code for generative retrieval is stored in VL-T5/. For environments, please refer to the original VL-T5 repository.
 
+The link for image features can be downloaded in 
 
 # Multimodal taxonomy classes
 We show the definition and real cases of these multimodal taxonomy via the MQC taxonomy file in the data/ folder.
